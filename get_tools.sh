@@ -17,11 +17,12 @@ wget https://raw.githubusercontent.com/moses-smt/mosesdecoder/master/scripts/gen
 chmod +x multi-bleu.perl
 
 
-## Get METEOR scorer
-#wget https://www.cs.cmu.edu/~alavie/METEOR/download/meteor-1.5.tar.gz
-#gunzip meteor-1.5.tar.gz
-#tar -xvf meteor-1.5.tar
+# Get METEOR scorer
+wget https://www.cs.cmu.edu/~alavie/METEOR/download/meteor-1.5.tar.gz
+gunzip meteor-1.5.tar.gz
+tar -xvf meteor-1.5.tar
 
 # Gensim (Topic Models and Word2Vec)
+# TODO: this affects baseline conda env..
 conda install -y -c conda-forge gensim
 
