@@ -26,3 +26,9 @@ PROPOSED=temp.tok #TODO
 # Get Meteor scores
 java -Xmx2G -jar ./bin/meteor-1.5/meteor-1.5.jar $PROPOSED $CORRECT | grep 'Final score' | awk '{print $3}'
 # Prints Meteor score
+
+# Get Doc2Vec scores
+python score_doc2vec.py $PROPOSED
+#TODO: Vector output formatting
+
+
