@@ -7,11 +7,14 @@ common_texts = []
 for i in range(1, len(sys.argv)):
   document = sys.argv[i]
   words = []
-  #TODO: First word is ___
   with open(document) as f:
     for line in f:
       line = line.rstrip("\n")
-      words = words + line.split(" ")
+      cwords = line.split(" ")
+      prepped = cwords[0].split("___")
+      #print(prepped[4])
+      cwords[0] = prepped[4]
+      words = words + cwords
     common_texts.append(words)  
     #print(words)
 #print(common_texts)
