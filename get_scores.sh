@@ -1,17 +1,20 @@
 
-INPUTS=$1
+INPUTS1=$1
+INPUTS2=$2
 
 # Get only the text
-cat $INPUTS | awk '{split($0,a,"___"); print a[5]}' > temp.txt
+cat $INPUTS1 | awk '{split($0,a,"___"); print a[5]}' > temp.txt
+cat $INPUTS2 | awk '{split($0,a,"___"); print a[5]}' > temp2.txt
 
-# Tokenize with moses tokenizer (assuming english)
+# Tokenize with moses tokenizer (assuming english). Note tokenized bleu is normally not what you want
 ./bin/tokenizer.perl -l en < temp.txt > temp.tok
+./bin/tokenizer.perl -l en < temp2.txt > temp2.tok
 
 # TODO: Train a truecaser model? Use a pretrained truecase? Truecase?
 
 
 # TODO: Decide what the "correct" files are? line in a file?
-CORRECT=temp.tok #TODO
+CORRECT=temp2.tok #TODO
 PROPOSED=temp.tok #TODO
 
 
