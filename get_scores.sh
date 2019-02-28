@@ -16,9 +16,13 @@ PROPOSED=temp.tok #TODO
 
 
 # Get BLEU scores
-./bin/multi-bleu.perl -lc $CORRECT < $PROPOSED #-lc means lowercase
-#TODO: Split BLEU, 1/2/3/4-gram scores?
+./bin/multi-bleu.perl -lc $CORRECT < $PROPOSED | grep 'BLEU' | awk '{print (substr($3, 1, length($3)-1)); split($4,a,"/"); print a[1]; print a[2]; print a[3]; print a[4];}' #-lc means lowercase
+# Prints BLEU
+# Prints 1-grams
+# Prints 2-grams
+# Prints 3-grams
+# Prints 4-grams
 
 # Get Meteor scores
 java -Xmx2G -jar ./bin/meteor-1.5/meteor-1.5.jar $PROPOSED $CORRECT | grep 'Final score' | awk '{print $3}'
-
+# Prints Meteor score
